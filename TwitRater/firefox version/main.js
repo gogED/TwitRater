@@ -4,7 +4,7 @@ const getRating = (likes, views) => {
 }
 
 
-
+// manually input likes and views
 const insertRating = () => {
     let likes = document.querySelector('#likes').value
     let views = document.querySelector('#views').value
@@ -24,7 +24,13 @@ browser.runtime.onMessage.addListener((message) => {
     let views = message.data[1]
     document.getElementById("value").innerHTML = getRating(likes, views)
 })
+// send singal to content.js when extension is clicked
+browser.tabs.query({active: true, currentWindow: true}).then(function(tabs) {
+    browser.tabs.sendMessage(tabs[0].id, {data: "Hello from background.js!"});
+  });
   
+
+// get button functionality
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("get-button").addEventListener("click", insertRating);
   });
