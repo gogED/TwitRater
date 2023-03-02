@@ -1,7 +1,7 @@
-console.log('testing')
-const body = document.body
-body.append('testing')
+// get new value every second
+setInterval(autoRate, 1000)
 
+function autoRate() {
 // scrape likes and views from twitter
    // traverse helper
  let likeLength = document.getElementsByClassName("css-4rbku5 css-18t94o4 css-901oao r-1nao33i r-1loqt21 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0").length
@@ -36,3 +36,4 @@ console.log(`views: ${views}`)
 // send to background.js using firefox api
 let numbers = [likes, views]
 browser.runtime.sendMessage({data: numbers})
+}
