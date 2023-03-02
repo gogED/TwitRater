@@ -1,0 +1,40 @@
+.body {
+    /* make coloured edges */
+    background-color: #202124;
+    margin: 0px;
+    padding: 10px;
+    border: 3px solid #1c98ec;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.input {
+    background-color: hsl(225, 6%, 26%);
+    margin: 6px;
+    border-radius: 5px;
+    color: white;
+}
+.get {
+    padding-left: 75px;
+    padding-right: 75px;
+    margin: 8px;
+    background-color: hsl(184, 12%, 47%);
+    color: white;
+    border: 0px;
+}
+h2 {
+    margin: 0px;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    color: hwb(204 56% 9%);
+}
+h3 {
+    margin: 3px;
+    margin-bottom: 13px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px;
+    font-weight: 40;
+    color:hwb(203 76% 11%)
+}
