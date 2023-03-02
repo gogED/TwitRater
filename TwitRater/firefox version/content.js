@@ -1,11 +1,18 @@
-// get new value every second
-setInterval(autoRate, 1000)
+// if you recive a message from background.js, run the autoRate function
+browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+     autoRate()
+  });
+  
+
 
 function autoRate() {
 // scrape likes and views from twitter
    // traverse helper
  let likeLength = document.getElementsByClassName("css-4rbku5 css-18t94o4 css-901oao r-1nao33i r-1loqt21 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0").length
  likeLength = likeLength - 1
+ if (document.getElementsByClassName("css-4rbku5 css-18t94o4 css-901oao r-1nao33i r-1loqt21 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0")[likeLength].lastChild.firstChild.firstChild.data != "Likes") {
+    return;
+ }
    // select likes and views
 let likes = document.getElementsByClassName("css-4rbku5 css-18t94o4 css-901oao r-1nao33i r-1loqt21 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0")[likeLength].firstElementChild.firstChild.firstChild.firstChild.firstChild.data
 let views = document.getElementsByClassName("css-1dbjc4n r-1d09ksm r-1471scf r-18u37iz r-1wbh5a2")[0].lastChild.firstChild.firstElementChild.firstChild.firstChild.firstChild.firstChild.data
@@ -30,8 +37,8 @@ if (likes.includes('M')) {
     likes = likes.replace(',', '')
 }
  // log values for debugging
-console.log(`likes: ${likes}`)
-console.log(`views: ${views}`)
+// console.log(`likes: ${likes}`)
+// console.log(`views: ${views}`)
 
 // send to background.js using firefox api
 let numbers = [likes, views]
